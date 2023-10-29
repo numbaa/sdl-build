@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: libsdl-org/SDL
-          ref: release-2.0.20
+          ref: release-2.28.4
           path: sdl
       - name: Init MSVC
         uses: ilammy/msvc-dev-cmd@v1
