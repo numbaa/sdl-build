@@ -45,7 +45,7 @@ jobs:
           path: sdl
       - name: Install deps
         run: |
-          sudo apt-get -y install gcc-10 g++-10 libpulse-dev libsound2-dev libpulse-dev libxext-dev libegl-dev libdrm-dev libwayland-cursor0 libwayland-egl1 libxkbcommon-dev libxcursor-dev libgl-dev libgles-dev libglx-dev
+          sudo apt-get -y install gcc-10 g++-10 libpulse-dev libasound2-dev libpulse-dev libxext-dev libegl-dev libdrm-dev libwayland-cursor0 libwayland-egl1 libxkbcommon-dev libxcursor-dev libgl-dev libgles-dev libglx-dev
           alias gcc='gcc-10'
           alias g++='g++-10'
           export CC=`which gcc-10`
