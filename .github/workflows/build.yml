@@ -69,3 +69,31 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: sdl.linux.${{ github.ref_name }}.tar.gz
+  macOS:
+    permissions:
+      contents: write
+    runs-on: macos-14
+    steps:
+      - name: Checkout sdl
+        uses: actions/checkout@v4
+        with:
+          repository: libsdl-org/SDL
+          ref: release-2.28.4
+          path: sdl
+      - name: Build
+        run: |
+          cd sdl
+          mkdir build
+          cd build
+          cmake .. -B Release -DCMAKE_BUILD_TYPE=Release
+          cmake --build Release
+          cmake --install Release --prefix install/Release
+      - name: Generate tar
+        run: |
+          echo ${{ github.sha }} > Release.txt
+          cp Release.txt ./sdl/build/install/Release
+          tar -czvf sdl.macos.${{ github.ref_name }}.tar.gz -C ./sdl/build/install/Release .
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: sdl.macos.${{ github.ref_name }}.tar.gz
