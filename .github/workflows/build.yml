@@ -92,8 +92,8 @@ jobs:
         run: |
           echo ${{ github.sha }} > Release.txt
           cp Release.txt ./sdl/build/install/Release
-          tar -czvf sdl.macos.${{ github.ref_name }}.tar.gz -C ./sdl/build/install/Release .
+          tar -czvf sdl.mac.${{ github.ref_name }}.tar.gz -C ./sdl/build/install/Release .
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: sdl.macos.${{ github.ref_name }}.tar.gz
+          files: sdl.mac.${{ github.ref_name }}.tar.gz
